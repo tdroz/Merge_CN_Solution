@@ -849,9 +849,6 @@ tbApp.controller('taskboardController', function ($scope, $filter, $http) {
         }
     };
 
-
-
-
     // moves the task item to the archive folder and marks it as complete
     // also removes it from the model data
     $scope.archiveTask = function (item, sourceArray, filteredSourceArray) {
@@ -1265,9 +1262,7 @@ tbApp.controller('taskboardController', function ($scope, $filter, $http) {
             }
         } catch (error) {
             writeLog('getConfig: ' + error)
-        }
-
-        
+        }     
     }
 
     var saveConfig = function () {
@@ -1556,7 +1551,5 @@ tbApp.controller('taskboardController', function ($scope, $filter, $http) {
         } catch (error) {
             writeLog('getContrastYIQ: ' + message);
         }
-    }
-
-   
+    }   
 });
