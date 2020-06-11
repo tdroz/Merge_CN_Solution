@@ -1,0 +1,95 @@
+<a href="https://janware.nl/gitlab/upgrade.html">Upgrade Instructions for local installations</a>
+
+<h2>Version 2.0.20</h2>
+<p>Apart of a local installation, the JanBan app can now be run from the internet as well.
+<br>Your tasks will not be exposed, because the app still keeps all your data within the context of Outlook. Only the app will be pulled from the internet.
+<br>This solves the issue for people who cannot - or do not want to - install software locally.</p>
+<p>Changing to this new setup is just a matter of using another url as the home page of your Outlook Home Folder:</p>
+<li>Right-click your Outlook Home Folder and then click Properties. Select the Home Page tab in the Properties dialog box.</li>
+<li>In the Address box, type: <b>https://janware.nl/janban</b>. Click to select the Show home page by default for this folder check box and then click OK.</li>
+<li>Or download and run the <a href="https://janware.nl/gitlab/install.zip">install.cmd</a> batch file, which does this for you.</li>
+<p></p>
+<p>But of course you can stick to your local version. That's up to you.</p>
+<p></p>
+<table border="1">
+    <tbody>
+    <tr>
+        <th> </th>
+        <th>Online</th>
+        <th>Local</th>
+    </tr>
+    <tr>
+        <td>Setup</td>
+        <td>Very easy</td>
+        <td>Quite a bit of work</td>
+    </tr>
+    <tr>
+        <td>Updates</td>
+        <td>Automatic, no action needed from your side</td>
+        <td>You need to install the updates yourself</td>
+    </tr>
+    <tr>
+        <td>Offline</td>
+        <td>The app won't work when you have no internet connection</td>
+        <td>The app can still be used if the internet is down</td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Version 2.0.19</h2>
+<li>Version 2.0.18 did not display the priority colors any more. Sorry for this bug. It is fixed in this version.</li>
+
+<h2>Version 2.0.18</h2>
+<li>From now on previous versions will be kept at https://janware.nl/gitlab/. If you want to go back after an upgrade just download and install the version you want to have.</li>
+<li>To better support users using the GTD planning method, a Someday/Maybe column has been added. It is hidden by default. Go to the Config screen to unhide it. The Someday column does not display due dates, and does not indicate if a task has high or low priority. It just lists the tasks.</li>
+
+<h2>Version 2.0.17</h2>
+<li>Setting the limit to zero to switch off the limit on the Next and InProgress columns didn't always work properly. This is fixed.</li>
+<li>Added the installation folder to the config screen.</li>
+<li>Added written and animated instructions on how to upgrade to a newer version.</li>
+<li>Solved a backbards compatibility problem with older versions that do not use the 'Kanban' folder name for the task lanes. Conversion to the current system will be done automatically.</li>
+
+<h2>Version 2.0.16</h2>
+<li>Added a config option to switch debug logging on. In case of issues this log can be added to the support email.</li>
+<li>Added checkboxes to select which attachments should be added to the support email.</li>
+<li>Added error handling in all functions in order to have detailed information when something goes wrong.</li>
+<li>Added a popup message when you drop a task in a folder when the maximum number of items is reached.</li>
+
+<strong>Sometimes you have to hit Ctrl-F5 before you will see the latest info in this What's new page...</strong>
+
+<h2>Version 2.0.15</h2>
+<li>By request of a few users I added a select box in the filter bar to quickly switch between categories (or projects, as a few users use them).</li>
+
+<h2>Version 2.0.14</h2>
+<li>Added a ping back to monitor if the app is actually being used. This can be switched off if you don't want this to happen.</li>
+
+<h2>Version 2.0.13</h2>
+<li>If you upgrade from an early version of this plugin, the configuration is not compatible. This is fixed.</li>
+
+<h2>Version 2.0.12</h2>
+<li>Your configuration will be attached to the feedback/support email for easier debugging</li>
+<li>Added your Outlook version to the subject of the support email</li>
+
+<h2>Version 2.0.11</h2>
+<li>For recurring tasks: move new tasks with future Start Dates back from Next to Backlog automatically</li>
+<li>Added a setting to the config screen in order to be able to move due tasks to the Next column automatically. Default: no</li>
+<li>Sometimes filtering didn't work after startup of the board. This is fixed</li>
+<li>Sometimes the filter jumped back to previous filter value. This is fixed</li>
+<li>It occured very rarely that the completion date could not be read during the automatic cleaning of the done tasks. This is fixed.</li>
+
+<h2>Version 2.0.10</h2>
+<li>Introduced the Postcardware statement on the About page</li>
+<li>Added the possibility to send a support or feedback message from the About page</li>
+
+<h2>Version 2.0.9</h2>
+<li>Changed install script for better Office version detection</li>
+<li>Use Glyphicon font from Bootstrap CDN instead of local version to fix caching issues</li>
+
+<h2>Version 2.0.8</h2>
+<li>Added Version History</li>
+
+<h2>Version 2.0.6</h2>
+<li>Fixed a bunch of minor issues</li>
+
+<h2>Version 2.0.0</h2>
+<li>Added Configuration screen</li>
