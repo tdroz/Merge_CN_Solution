@@ -18,6 +18,7 @@
     <script src="lib/jquery.toaster.js"></script>
     <script src="lib/angular.js"></script>
     <script src="lib/sortable.min.js"></script>
+    <script src="lib/checklist-model.js"></script>
     <script src="lib/moment.min.js"></script>
     <script src="lib/minify.json.js"></script>
     <script src="lib/deep-diff-0.3.8.min.js"></script>
@@ -45,15 +46,17 @@
         <!-- header bar -->
         <section id="headerbar" class="row">
             <div ng-if="display_message" class="col-md-12 bg-warning">
-                <div ng-if="( where=='(offline)' )">
+                <div ng-show="config.NEW_VERSION_NOTIFICATION" ng-if="( where=='(offline)' )">
                     <p><strong>A newer version is available: {{version_number}} (your version is {{version}})</strong>
                         <a href="{{DOWNLOAD_URL}}" download id="download" class="button">download</a>
-                        <button type="button" class="button" data-toggle="modal" data-target="#myModal">What's new?</button>
+                        <button type="button" class="button" data-toggle="modal" data-target="#myModal">What's
+                            new?</button>
                     </p>
                 </div>
                 <div ng-if="( where=='(online)' )">
                     <p><strong>Upgraded to a newer version: {{version_number}}</strong>
-                        <button type="button" class="button" data-toggle="modal" data-target="#myModal">What's new?</button>
+                        <button type="button" class="button" data-toggle="modal" data-target="#myModal">What's 
+                            new?</button>
                     </p>
                 </div>
             </div>
@@ -98,7 +101,7 @@
                            placeholder="Filter" />
                     <div class="input-group-addon">
                         <select class="btn btn-default btn-xs" ng-model="filter.category">
-                            <option ng-selected="{{category == filter.category}}" ng-repeat="category in categories"
+                            <option ng-selected="{{category == filter.category}}" ng-repeat="category in activeCategories"
                                     value="{{category}}">
                                 {{category}}
                             </option>
@@ -161,7 +164,8 @@
                             ng-dblclick="editTask(task)">
                             <header class="panel-heading">
                                 {{ task.subject }}
-                                <span ng-if="(folder.type != 0 && folder.type != 5 && (task.duedate | date:'yyyy' ) != '4501')"
+                                <span 
+                                    ng-if="(folder.type != 0 && folder.type != 5 && (task.duedate | date:'yyyy' ) != '4501')"
                                       ng-class="isOverdue(task.duedate)" class="pull-right">(Due:
                                     {{ task.duedate | date:config.DATE_FORMAT }}) </span>
                                 <span ng-if="folder.type == 5" class="pull-right">(Completed:
@@ -278,7 +282,8 @@
                             <div class="col-sm-1">
                                 <input type="checkbox" ng-model="config.BACKLOG_FOLDER.FILTER_ON_START_DATE">
                             </div>
-                            <div class="col-sm-10"> (means: hide tasks for which the Start Date is in the future)</div>
+                            <div class="col-sm-10"> (means: hide tasks for which the Start Date is in the future)
+                            </div>
                         </div>
                         <div class="form-check row col-sm-12">
                             <label class="control-label col-sm-1">Display:</label>
@@ -321,7 +326,8 @@
                         <div class="form-check row col-sm-12">
                             <label class="control-label col-sm-1">Max number of tasks:</label>
                             <div class="col-sm-2">
-                                <input type="number" class="form-control input-sm" ng-model="config.NEXT_FOLDER.LIMIT">
+                                <input type="number" class="form-control input-sm" 
+                                                     ng-model="config.NEXT_FOLDER.LIMIT">
                             </div>
                             <div class="col-sm-5"> (zero for no limit)</div>
                         </div>
@@ -339,7 +345,8 @@
                             </div>
                             <div class="col-sm-1">
                                 <label class="control-label"> <input type="checkbox"
-                                           ng-model="config.NEXT_FOLDER.DISPLAY_PROPERTIES.TOTALWORK"> Total work</label>
+                                                                     ng-model="config.NEXT_FOLDER.DISPLAY_PROPERTIES.TOTALWORK"> Total 
+                                                                     work</label>
                             </div>
                         </div>
                         <div class="form-check row col-sm-12">
@@ -479,7 +486,8 @@
                     <div class="form-check row col-sm-12">
                         <label class="control-label col-sm-1">Category Colors:</label>
                         <div class="col-sm-1">
-                            <label class="control-label"><input type="checkbox" ng-model="config.USE_CATEGORY_COLORS">
+                            <label class="control-label"><input type="checkbox"
+                                                                ng-model="config.USE_CATEGORY_COLORS">
                                 Category</label>
                         </div>
                         <div class="col-sm-1" ng-show="config.USE_CATEGORY_COLORS">
@@ -505,7 +513,8 @@
                         <div class="col-sm-1">
                             <input type="checkbox" ng-model="config.AUTO_START_TASKS">
                         </div>
-                        <div class="col-sm-10"> (Automatically move tasks to {{config.NEXT_FOLDER.TITLE}} column when
+                        <div class="col-sm-10"> (Automatically move tasks to {{config.NEXT_FOLDER.TITLE}} column
+                            when
                             its Start Date has arrived)</div>
                     </div>
                     <div class="form-check row col-sm-12">
@@ -513,7 +522,8 @@
                         <div class="col-sm-1">
                             <input type="checkbox" ng-model="config.AUTO_START_DUE_TASKS">
                         </div>
-                        <div class="col-sm-10"> (Automatically move tasks to {{config.NEXT_FOLDER.TITLE}} column when
+                        <div class="col-sm-10"> (Automatically move tasks to {{config.NEXT_FOLDER.TITLE}} column
+                            when
                             its Due Date has arrived)</div>
                     </div>
                     <div class="form-check row col-sm-12">
