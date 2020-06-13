@@ -195,6 +195,15 @@ tbApp.controller('taskboardController', function ($scope, $filter, $http) {
             }
         };
 
+        $scope.categories = ["<All Categories>", "<No Category>"];
+        outlookCategories = getOutlookCategories();
+        outlookCategories.names.forEach(function (name) {
+            $scope.categories.push(name);
+        });
+        $scope.categories = $scope.categories.sort();
+        
+       
+
         getConfig();
         getState();
         getVersion();
@@ -260,7 +269,7 @@ tbApp.controller('taskboardController', function ($scope, $filter, $http) {
 
     var getTasksFromOutlook = function (path, sort, folderStatus) {
         try {
-            var i, array = [];
+            var i, j, cats, array = [];
             var tasks = getTaskItems(path);
 
             var count = tasks.Count;
@@ -284,6 +293,15 @@ tbApp.controller('taskboardController', function ($scope, $filter, $http) {
                         owner: task.Owner,
                         totalwork: task.TotalWork,
                     });
+                }
+                cats = task.Categories.split(/[;,]+/);
+                for (j=0; j < cats.length; j++) {
+                    cats[j] = cats[j].trim();
+                    if (cats[j].length > 0) {
+                        if ($scope.activeCategories.indexOf(cats[j]) === -1) {
+                            $scope.activeCategories.push(cats[j]);
+                        }
+                    }
                 }
             };
 
@@ -316,11 +334,13 @@ tbApp.controller('taskboardController', function ($scope, $filter, $http) {
 
     $scope.initTasks = function () {
         try {
+            $scope.activeCategories = ["<All Categories>","<No Category>"];
             // get tasks from each outlook folder and populate model data
             $scope.taskFolders.forEach(function (taskFolder) {
                 taskFolder.tasks = getTasksFromOutlook(taskFolder.name, taskFolder.sort, taskFolder.initialStatus);
                 taskFolder.filteredTasks = taskFolder.tasks;
             });
+            $scope.activeCategories = $scope.activeCategories.sort();
 
             // then apply the current filters for search and sensitivity
             $scope.applyFilters();
@@ -1194,7 +1214,11 @@ tbApp.controller('taskboardController', function ($scope, $filter, $http) {
 
     var getState = function () {
         try {
-            var state = { "private": "0", "search": "", "category": "<All Categories>" }; // default state
+            var state = { 
+                "private": "0",
+                "search": "",
+                "category": "<All Categories>"
+             }; // default state
 
             if ($scope.config.SAVE_STATE) {
                 var stateRaw = getJournalItem(STATE_ID);
