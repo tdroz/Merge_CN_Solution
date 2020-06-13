@@ -6,8 +6,8 @@
     <title>Outlook Task Board</title>
     <meta http-equiv="X-UA-Compatible" content="IE=11">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/taskboard.css">
 
     <!-- scripts -->
@@ -87,6 +87,14 @@
                         <strong>Outlook Taskboard</strong>
                     </div>
                     <div class="input-group-addon" id="currentTask">Current Task:</div>
+                    <div ng-show="config.MULTI_MAILBOX" class="input-group-addon">
+                        <select class="selectpicker" ng-model="filter.mailbox">
+                            <option ng-selected="{{mailbox == filter.mailbox}}" ng-repeat="mailbox in config.ACTIVE_MAILBOXES"
+                                                                                value="{{mailbox}}">
+                            {{mailbox}}
+                            </option>
+                        </select>
+                    </div>
                     <div class="input-group-addon">
                         <button id="refreshbutton" class="btn btn-default btn-xs" aria-label="Refresh" type="button"
                                 ng-click="initTasks();"><span class="glyphicon glyphicon-refresh"
