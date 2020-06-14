@@ -1,4 +1,13 @@
-# Outlook Kanban Taskboard aka **JanBan**
+# Outlook Kanban Taskboard aka **Merge_CN_Solution**
+
+Code forked from Outlook Kanban Taskboard aka **JanBan**, and a fork from charles.needham.cn, who implemented the Toggl integration
+
+## TODO 1. Add outlook category to Toggl Project
+## TODO 2. Add Tooltips to all UI elements
+## TODO 3. Move category line from footer to header
+## TODO 4. Needs new name
+
+## Text below taken from Janban
 
 In case you found this repository on Github:
 
