@@ -2,10 +2,15 @@
 
 Code forked from Outlook Kanban Taskboard aka **JanBan**, and a fork from charles.needham.cn, who implemented the Toggl integration
 
-## TODO 1. Add outlook category to Toggl Project
-## TODO 2. Add Tooltips to all UI elements
-## TODO 3. Move category line from footer to header
-## TODO 4. Needs new name
+## TODO Add outlook category to Toggl Project
+## TODO #1 Add Tooltips to all UI elements
+## TODO Add option to move category line from footer to header
+## TODO Needs new name
+## TODO Right-click on task operation
+## TODO Spacing - horizontal variable size
+## TODO Add options selector page from Kanban
+## TODO Add reading flagged email (from Malethi)
+## TODO Add Start Date in task (from Malethi)
 
 ## Text below taken from Janban
 
