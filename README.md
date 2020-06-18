@@ -2,7 +2,6 @@
 
 Code forked from Outlook Kanban Taskboard aka **JanBan**, and a fork from charles.needham.cn, who implemented the Toggl integration
 
-## TODO Add outlook category to Toggl Project
 ## TODO #1 Add Tooltips to all UI elements
 ## TODO Add option to move category line from footer to header
 ## TODO Needs new name

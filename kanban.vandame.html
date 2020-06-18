@@ -90,10 +90,7 @@
                     <div class="input-group-addon" id="currentTask">Current Task:</div>
                     <div ng-show="config.MULTI_MAILBOX" class="input-group-addon">
                         <select class="selectpicker" ng-model="filter.mailbox">
-                            <option ng-selected="{{mailbox == filter.mailbox}}" ng-repeat="mailbox in config.ACTIVE_MAILBOXES"
-                                                                                value="{{mailbox}}">
-                            {{mailbox}}
-                            </option>
+                            <option ng-selected="{{mailbox == filter.mailbox}}" ng-repeat="mailbox in config.ACTIVE_MAILBOXES" value="{{mailbox}}">{{mailbox}}</option>
                         </select>
                     </div>
                     <div class="input-group-addon">
@@ -112,14 +109,15 @@
                            placeholder="Filter" />
                     <div class="input-group-addon">
                         <select class="btn btn-default btn-xs" ng-model="filter.category" data-toggle="tooltip" data-placement="top" title="Filter by category">
-                            <option ng-selected="{{category == filter.category}}" ng-repeat="category in activeCategories"
-                                    value="{{category}}">{{category}}</option>
+                            <option ng-selected="{{category == filter.category}}" ng-repeat="category in activeCategories" 
+                                value="{{category}}">{{category}}</option>
                         </select>
                     </div>
                     <div class="input-group-addon">
                         <button class="btn btn-default btn-xs" aria-label="Report" type="button" data-toggle="tooltip" data-placement="top" title="Create report"
-                                ng-click="createReport();">
-                                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></button>
+                            ng-click="createReport();">
+                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                        </button>
                     </div>
                     <div class="input-group-addon">
                         <span class="glyphicon"
@@ -133,13 +131,14 @@
                     </div>
                     <div class="input-group-addon">
                         <button class="btn btn-default btn-xs" aria-label="Config" type="button" data-toggle="tooltip" data-placement="top" title="Config"
-                                ng-click="switchToConfigMode();">
-                                <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
+                            ng-click="switchToConfigMode();">
+                            <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+                        </button>
                     </div>
                     <div class="input-group-addon">
                         <button class="btn btn-default btn-xs" aria-label="Help" data-toggle="tooltip" data-placement="top" title="Help"
-                                ng-click="switchToHelpMode();">
-                                <strong>?</strong></button>
+                            ng-click="switchToHelpMode();"><strong>?</strong>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -168,16 +167,23 @@
                     </header>
                     <ul id="folder-{{folder.type}}" ui-sortable="sortableOptions" ng-model="folder.filteredTasks"
                         ng-class="{ 'tasklist-default' : !display_message, 'tasklist-message' : display_message }"
-                        class="panel-body list-unstyled tasklist">
+                            class="panel-body list-unstyled tasklist">
+
                         <li ng-repeat="task in folder.filteredTasks" class="task panel"
-                            ng-class="{ 'task-completed': folder.type == 5,  'task-low' : task.priority === 0, 'task-medium' : task.priority === 1, 'task-high' : task.priority === 2, 'task-private': task.sensitivity === 2 }"
+                            ng-class="{ 'task-completed': folder.type == 5,  
+                                        'task-low' : task.priority === 0, 
+                                        'task-medium' : task.priority === 1, 
+                                        'task-high' : task.priority === 2, 
+                                        'task-private': task.sensitivity === 2 }"
                             ng-dblclick="editTask(task)">
+                            
                             <header class="panel-heading">
                                 {{ task.subject }}
                                 <span ng-if="(folder.type != 0 && folder.type != 5 && (task.duedate | date:'yyyy' ) != '4501')"
                                       ng-class="isOverdue(task.duedate)" class="pull-right">(Due:{{ task.duedate | date:config.DATE_FORMAT }}) </span>
                                 <span ng-if="folder.type == 5" class="pull-right">(Completed:{{ task.completeddate | date:config.DATE_FORMAT }}) </span>
                             </header>
+
                             <div class="panel-body"> {{ task.notes }} </div>
                             
                             <footer class="text-right" ng-style="getFooterStyle(task.categories)">
@@ -193,16 +199,20 @@
                                 <span class="btn-group btn-group-xs">
                                     <button ng-show="(task.oneNoteURL != '')" class="btn btn-default btn-xs" aria-label="OneNote" type="button" data-toggle="tooltip" data-placement="top" title="Open OneNote item"
                                             ng-click="openOneNoteURL(task.oneNoteURL)">
-                                            <span class="glyphicon glyphicon-book" aria-hidden="true"></span></button>
+                                            <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                                    </button>
                                     <button ng-if="folder.allowEdit" class="btn btn-default btn-xs" aria-label="Edit" type="button" data-toggle="tooltip" data-placement="top" title="Edit task"
                                             ng-click="editTask(task)">
-                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
+                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                    </button>
                                     <button class="btn btn-default btn-xs" aria-label="Delete" type="button" data-toggle="tooltip" data-placement="top" title="Delete task"
                                             ng-click="deleteTask(task,folder.tasks,folder.filteredTasks, true)">
-                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                    </button>
                                     <button aria-label="Toggl Start" type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="Start Toggl task"
                                             ng-click="starTogglTask(task,folder.tasks,folder.filteredTasks, true)">
-                                            <span class="glyphicon glyphicon-play-circle"></span></button>
+                                            <span class="glyphicon glyphicon-play-circle"></span>
+                                    </button>
                                 </span>
 
                             </footer>
