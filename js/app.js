@@ -115,17 +115,17 @@ tbApp.controller('taskboardController', function ($scope, $filter, $http) {
                             ($scope.config.INPROGRESS_FOLDER.LIMIT !== 0
                                 && e.target.id !== ('folder-' + DOING)
                                 && ui.item.sortable.droptarget.attr('id') === ('folder-' + DOING)
-                                && $scope.taskFolders[DOING].tasks.length >= $scope.config.INPROGRESS_FOLDER.LIMIT)
+                                && $scope.taskFolders[DOING].tasks.length > $scope.config.INPROGRESS_FOLDER.LIMIT)  // Change from >= to >
                             ||
                             ($scope.config.NEXT_FOLDER.LIMIT !== 0
                                 && ('folder-' + SPRINT)
                                 && ui.item.sortable.droptarget.attr('id') === ('folder-' + SPRINT)
-                                && $scope.taskFolders[SPRINT].tasks.length >= $scope.config.NEXT_FOLDER.LIMIT)
+                                && $scope.taskFolders[SPRINT].tasks.length > $scope.config.NEXT_FOLDER.LIMIT)
                             ||
                             ($scope.config.WAITING_FOLDER.LIMIT !== 0
                                 && e.target.id !== ('folder-' + WAITING)
                                 && ui.item.sortable.droptarget.attr('id') === ('folder-' + WAITING)
-                                && $scope.taskFolders[WAITING].tasks.length >= $scope.config.WAITING_FOLDER.LIMIT)) {
+                                && $scope.taskFolders[WAITING].tasks.length > $scope.config.WAITING_FOLDER.LIMIT)) {
                             writeLog('Drag and drop canceled because of limit reached. From ' + e.target.id + ' to ' + ui.item.sortable.droptarget.attr('id'));
                             alert('Sorry, you reached the defined limit of this folder')
                             $scope.initTasks();

@@ -90,8 +90,7 @@
                     <div class="input-group-addon" id="currentTask">Current Task:</div>
                     <div ng-show="config.MULTI_MAILBOX" class="input-group-addon">
                         <select class="selectpicker" ng-model="filter.mailbox">
-                            <option ng-selected="{{mailbox == filter.mailbox}}" ng-repeat="mailbox in config.ACTIVE_MAILBOXES"
-                                                                                value="{{mailbox}}">
+                            <option ng-selected="{{mailbox == filter.mailbox}}" ng-repeat="mailbox in config.ACTIVE_MAILBOXES" value="{{mailbox}}">
                             {{mailbox}}
                             </option>
                         </select>
@@ -108,8 +107,7 @@
                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                         </button>
                     </div>
-                    <input type="text" name="search" ng-model="filter.search" class="form-control"
-                           placeholder="Filter" />
+                    <input type="text" name="search" ng-model="filter.search" class="form-control" placeholder="Filter" />
                     <div class="input-group-addon">
                         <select class="btn btn-default btn-xs" ng-model="filter.category" data-toggle="tooltip" data-placement="top" title="Filter by category">
                             <option ng-selected="{{category == filter.category}}" ng-repeat="category in activeCategories"
@@ -170,17 +168,25 @@
                         ng-class="{ 'tasklist-default' : !display_message, 'tasklist-message' : display_message }"
                         class="panel-body list-unstyled tasklist">
                         <li ng-repeat="task in folder.filteredTasks" class="task panel"
-                            ng-class="{ 'task-completed': folder.type == 5,  'task-low' : task.priority === 0, 'task-medium' : task.priority === 1, 'task-high' : task.priority === 2, 'task-private': task.sensitivity === 2 }"
-                            ng-dblclick="editTask(task)">
-                            <header class="panel-heading">
+                            ng-class="{ 'task-completed': folder.type == 5,  
+                                        'task-low': task.priority === 0, 
+                                        'task-medium': task.priority === 1, 
+                                        'task-high': task.priority === 2, 
+                                        'task-private': task.sensitivity === 2 }"
+                                        ng-dblclick="editTask(task)">
+
+                        <!-- <header class="panel-heading">
                                 {{ task.subject }}
                                 <span ng-if="(folder.type != 0 && folder.type != 5 && (task.duedate | date:'yyyy' ) != '4501')"
                                       ng-class="isOverdue(task.duedate)" class="pull-right">(Due:{{ task.duedate | date:config.DATE_FORMAT }}) </span>
                                 <span ng-if="folder.type == 5" class="pull-right">(Completed:{{ task.completeddate | date:config.DATE_FORMAT }}) </span>
                             </header>
+
                             <div class="panel-body"> {{ task.notes }} </div>
+                        -->
                             
-                            <footer class="text-right" ng-style="getFooterStyle(task.categories)">
+                            <footer 
+                                class="text-right" ng-style="getFooterStyle(task.categories)">
                                 <div ng-if="( folder.displayOwner )"><span class="glyphicon glyphicon-user"></span>{{ task.owner }} </div>
                                 <div ng-if="( folder.displayPercent )" class="pull-right"> {{ task.percent }}%</div>
                                 <div ng-show="( filter.private == privacyFilter.all.value && task.sensitivity == 2 )" class="glyphicon glyphicon-lock"></div>
@@ -188,7 +194,10 @@
                                     <span class="glyphicon glyphicon-tag"></span>
                                     <span ng-repeat="cat in task.categories"><strong ng-style="cat.style">{{ cat.label }}</strong>&nbsp;</span>
                                 </div>
-                                <div ng-if="( folder.displayTotalWork )"><span class="glyphicon glyphicon-time"></span>{{ task.totalwork }} </div>
+
+                                <div ng-if="( folder.displayTotalWork )">
+                                    <span class="glyphicon glyphicon-time"></span>{{ task.totalwork }} 
+                                </div>
 
                                 <span class="btn-group btn-group-xs">
                                     <button ng-show="(task.oneNoteURL != '')" class="btn btn-default btn-xs" aria-label="OneNote" type="button" data-toggle="tooltip" data-placement="top" title="Open OneNote item"
@@ -204,8 +213,17 @@
                                             ng-click="starTogglTask(task,folder.tasks,folder.filteredTasks, true)">
                                             <span class="glyphicon glyphicon-play-circle"></span></button>
                                 </span>
-
                             </footer>
+
+                            <header class="panel-heading">
+                                {{ task.subject }}
+                                <span ng-if="(folder.type != 0 && folder.type != 5 && (task.duedate | date:'yyyy' ) != '4501')"
+                                      ng-class="isOverdue(task.duedate)" class="pull-right">(Due: {{ task.duedate | date:config.DATE_FORMAT }}) </span>
+                                <span ng-if="folder.type == 5" class="pull-right">(Completed: {{ task.completeddate | date:config.DATE_FORMAT }}) </span>
+                            </header>
+
+                            <div class="panel-body"> {{ task.notes }} </div>
+
                         </li>
                     </ul>
                 </div>
@@ -499,6 +517,13 @@
                                        ng-model="config.USE_CATEGORY_COLOR_FOOTERS"> Entire
                                  footer</label>
                         </div>
+                    </div>
+                    <div class="form-group row col-sm-12">
+                        <label class="control-label col-sm-1">Column task size:</label>
+                        <div class="col-sm-2">
+                            <!--  <input type="text" class="form-control input-sm" ng-model="config.TASK_SIZE"> */ -->
+                        </div>
+                        <div class="col-sm-5"> (size of task column)</div>
                     </div>
                     <div class="form-group row col-sm-12">
                         <label class="control-label col-sm-1">Task details:</label>

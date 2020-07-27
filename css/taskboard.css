@@ -1,7 +1,8 @@
 .taskboard {
     width: 100%;
     height: 100vh;
-    font: 400 12px/1.6 "Segoe UI", Tahoma, Arial, sans-serif;
+    font: 400 0.75vw "Segoe UI", Tahoma, Arial, sans-serif; 
+    /* font: 400 12px/1.6 "Segoe UI", Tahoma, Arial, sans-serif; */ /* Changed for 4K monitor */
 }
 
 .container-fluid {
